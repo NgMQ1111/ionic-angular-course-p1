@@ -5,8 +5,8 @@
     {
       "files": ["*.ts"],
       "parserOptions": {
-        "project": ["tsconfig.json"],
-        "createDefaultProgram": true
+        "project": ["ionic-angular-course-p1/tsconfig.json"],
+        "createDefaultProgram": true,
       },
       "extends": [
         "plugin:@angular-eslint/recommended",
