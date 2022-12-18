@@ -4,7 +4,7 @@
       <ion-back-button defaultHref="/places/tabs/discover"></ion-back-button>
     </ion-buttons> -->
     <ion-title class="ion-text-center">
-      {{ selecterPlace.title }}
+      {{ selectedPlace.title }}
     </ion-title>
     <ion-buttons slot="primary">
       <ion-button (click)="onCancel()">
@@ -15,7 +15,7 @@
 </ion-header>
 
 <ion-content class="ion-text-center ion-padding">
-  <form>
+  <form (ngSubmit)="onBookPlace()" #f="ngForm">
     <ion-grid>
       <ion-row>
         <ion-col sizeSm="6" offsetSm="3">
@@ -60,11 +60,9 @@
           <ion-item>
             <ion-label position="floating">From</ion-label>
             <ion-datetime
-              displayFormat="MMM DD YYYY"
-              pickerFormat="YY MMM DD"
-              presentation="date"
-              [min]="selecterPlace.availabelFrom?.toISOString()"
-              [max]="selecterPlace.availabelTo?.toISOString()"
+              presentation="date-time"
+              [min]="selectedPlace.availabelFrom?.toISOString()"
+              [max]="selectedPlace.availabelTo?.toISOString()"
               ngModel
               name="date-from"
               required
@@ -78,24 +76,19 @@
           <ion-item>
             <ion-label position="floating">To</ion-label>
             <ion-datetime
-              displayFormat="MMM DD YYYY"
-              pickerFormat="YY MMM DD"
-              presentation="date"
+              presentation="date-time"
               [min]=""
-              [max]="selecterPlace.availabelTo?.toISOString()"
+              [max]="selectedPlace.availabelTo?.toISOString()"
               ngModel
-              name="date-from"
-              required=""
+              name="date-to"
+              required
             ></ion-datetime>
           </ion-item>
         </ion-col>
       </ion-row>
       <ion-row>
         <ion-col sizeSm="6" offsetSm="3">
-          <ion-button
-            color="primary"
-            (click)="onBookPlace(startDateCtrl)"
-            expand="block"
+          <ion-button [disabled]="!f.valid || !datesValid" type="submit" color="primary" expand="block"
             >Book !</ion-button
           >
         </ion-col>

@@ -8,13 +8,13 @@
 
 export class Place {
   constructor(
-    public id?: string,
-    public title?: string,
-    public description?: string,
-    public imageUrl?: string,
-    public price?: number,
-    public availabelFrom?: Date,
-    public availabelTo?: Date,
-    public userId?: string
+    public id: string | null,
+    public title: string  | null,
+    public description: string | null,
+    public imageUrl: string | null,
+    public price: number | null,
+    public availabelFrom: Date | null,
+    public availabelTo: Date | null,
+    public userId: string | null
   ) {}
 }
